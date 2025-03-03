@@ -2,8 +2,12 @@
 
 import React, { useState } from "react";
 
+// Define a type for the valid port names
+type PortName = "PORTA" | "PORTB" | "PORTC" | "PORTD";
+
 const AVRPortDiagram = () => {
-  const [activePort, setActivePort] = useState("PORTB");
+  // Use the type for activePort
+  const [activePort, setActivePort] = useState<PortName>("PORTB");
   const [selectedPin, setSelectedPin] = useState("PB6");
   const [activeTab, setActiveTab] = useState("pinCtrl");
 
@@ -14,112 +18,112 @@ const AVRPortDiagram = () => {
     PORTD: { pins: ["PD0", "PD1", "PD2", "PD3", "PD4", "PD5", "PD6", "PD7"] },
   };
 
-  const registerInfo = {
-    DIR: {
-      description: "Data Direction Register",
-      bits: [
-        {
-          bit: 0,
-          name: "DIR0",
-          description: "Pin 0 Direction Control (0=Input, 1=Output)",
-        },
-        {
-          bit: 1,
-          name: "DIR1",
-          description: "Pin 1 Direction Control (0=Input, 1=Output)",
-        },
-        {
-          bit: 2,
-          name: "DIR2",
-          description: "Pin 2 Direction Control (0=Input, 1=Output)",
-        },
-        {
-          bit: 3,
-          name: "DIR3",
-          description: "Pin 3 Direction Control (0=Input, 1=Output)",
-        },
-        {
-          bit: 4,
-          name: "DIR4",
-          description: "Pin 4 Direction Control (0=Input, 1=Output)",
-        },
-        {
-          bit: 5,
-          name: "DIR5",
-          description: "Pin 5 Direction Control (0=Input, 1=Output)",
-        },
-        {
-          bit: 6,
-          name: "DIR6",
-          description: "Pin 6 Direction Control (0=Input, 1=Output)",
-        },
-        {
-          bit: 7,
-          name: "DIR7",
-          description: "Pin 7 Direction Control (0=Input, 1=Output)",
-        },
-      ],
-    },
-    OUT: {
-      description: "Port Output Register",
-      bits: [
-        { bit: 0, name: "OUT0", description: "Pin 0 Output Value" },
-        { bit: 1, name: "OUT1", description: "Pin 1 Output Value" },
-        { bit: 2, name: "OUT2", description: "Pin 2 Output Value" },
-        { bit: 3, name: "OUT3", description: "Pin 3 Output Value" },
-        { bit: 4, name: "OUT4", description: "Pin 4 Output Value" },
-        { bit: 5, name: "OUT5", description: "Pin 5 Output Value" },
-        { bit: 6, name: "OUT6", description: "Pin 6 Output Value" },
-        { bit: 7, name: "OUT7", description: "Pin 7 Output Value" },
-      ],
-    },
-    IN: {
-      description: "Port Input Register",
-      bits: [
-        { bit: 0, name: "IN0", description: "Pin 0 Input Value" },
-        { bit: 1, name: "IN1", description: "Pin 1 Input Value" },
-        { bit: 2, name: "IN2", description: "Pin 2 Input Value" },
-        { bit: 3, name: "IN3", description: "Pin 3 Input Value" },
-        { bit: 4, name: "IN4", description: "Pin 4 Input Value" },
-        { bit: 5, name: "IN5", description: "Pin 5 Input Value" },
-        { bit: 6, name: "IN6", description: "Pin 6 Input Value" },
-        { bit: 7, name: "IN7", description: "Pin 7 Input Value" },
-      ],
-    },
-    PINCTRL: {
-      description: "Pin Control Register",
-      bits: [
-        {
-          bit: 0,
-          name: "ISC0",
-          description: "Input Sense Configuration bit 0",
-        },
-        {
-          bit: 1,
-          name: "ISC1",
-          description: "Input Sense Configuration bit 1",
-        },
-        {
-          bit: 2,
-          name: "ISC2",
-          description: "Input Sense Configuration bit 2",
-        },
-        { bit: 3, name: "PULLUP", description: "Pull-up Enable (1=Enable)" },
-        {
-          bit: 4,
-          name: "OPC",
-          description: "Output Pin Configuration (Wired OR)",
-        },
-        { bit: 5, name: "INVEN", description: "Invert I/O" },
-        {
-          bit: 6,
-          name: "SRLEN",
-          description: "Slew Rate Limit Enable (0=Disabled)",
-        },
-        { bit: 7, name: "DRVSTR", description: "Output Driver Strength" },
-      ],
-    },
-  };
+  // const registerInfo = {
+  //   DIR: {
+  //     description: "Data Direction Register",
+  //     bits: [
+  //       {
+  //         bit: 0,
+  //         name: "DIR0",
+  //         description: "Pin 0 Direction Control (0=Input, 1=Output)",
+  //       },
+  //       {
+  //         bit: 1,
+  //         name: "DIR1",
+  //         description: "Pin 1 Direction Control (0=Input, 1=Output)",
+  //       },
+  //       {
+  //         bit: 2,
+  //         name: "DIR2",
+  //         description: "Pin 2 Direction Control (0=Input, 1=Output)",
+  //       },
+  //       {
+  //         bit: 3,
+  //         name: "DIR3",
+  //         description: "Pin 3 Direction Control (0=Input, 1=Output)",
+  //       },
+  //       {
+  //         bit: 4,
+  //         name: "DIR4",
+  //         description: "Pin 4 Direction Control (0=Input, 1=Output)",
+  //       },
+  //       {
+  //         bit: 5,
+  //         name: "DIR5",
+  //         description: "Pin 5 Direction Control (0=Input, 1=Output)",
+  //       },
+  //       {
+  //         bit: 6,
+  //         name: "DIR6",
+  //         description: "Pin 6 Direction Control (0=Input, 1=Output)",
+  //       },
+  //       {
+  //         bit: 7,
+  //         name: "DIR7",
+  //         description: "Pin 7 Direction Control (0=Input, 1=Output)",
+  //       },
+  //     ],
+  //   },
+  //   OUT: {
+  //     description: "Port Output Register",
+  //     bits: [
+  //       { bit: 0, name: "OUT0", description: "Pin 0 Output Value" },
+  //       { bit: 1, name: "OUT1", description: "Pin 1 Output Value" },
+  //       { bit: 2, name: "OUT2", description: "Pin 2 Output Value" },
+  //       { bit: 3, name: "OUT3", description: "Pin 3 Output Value" },
+  //       { bit: 4, name: "OUT4", description: "Pin 4 Output Value" },
+  //       { bit: 5, name: "OUT5", description: "Pin 5 Output Value" },
+  //       { bit: 6, name: "OUT6", description: "Pin 6 Output Value" },
+  //       { bit: 7, name: "OUT7", description: "Pin 7 Output Value" },
+  //     ],
+  //   },
+  //   IN: {
+  //     description: "Port Input Register",
+  //     bits: [
+  //       { bit: 0, name: "IN0", description: "Pin 0 Input Value" },
+  //       { bit: 1, name: "IN1", description: "Pin 1 Input Value" },
+  //       { bit: 2, name: "IN2", description: "Pin 2 Input Value" },
+  //       { bit: 3, name: "IN3", description: "Pin 3 Input Value" },
+  //       { bit: 4, name: "IN4", description: "Pin 4 Input Value" },
+  //       { bit: 5, name: "IN5", description: "Pin 5 Input Value" },
+  //       { bit: 6, name: "IN6", description: "Pin 6 Input Value" },
+  //       { bit: 7, name: "IN7", description: "Pin 7 Input Value" },
+  //     ],
+  //   },
+  //   PINCTRL: {
+  //     description: "Pin Control Register",
+  //     bits: [
+  //       {
+  //         bit: 0,
+  //         name: "ISC0",
+  //         description: "Input Sense Configuration bit 0",
+  //       },
+  //       {
+  //         bit: 1,
+  //         name: "ISC1",
+  //         description: "Input Sense Configuration bit 1",
+  //       },
+  //       {
+  //         bit: 2,
+  //         name: "ISC2",
+  //         description: "Input Sense Configuration bit 2",
+  //       },
+  //       { bit: 3, name: "PULLUP", description: "Pull-up Enable (1=Enable)" },
+  //       {
+  //         bit: 4,
+  //         name: "OPC",
+  //         description: "Output Pin Configuration (Wired OR)",
+  //       },
+  //       { bit: 5, name: "INVEN", description: "Invert I/O" },
+  //       {
+  //         bit: 6,
+  //         name: "SRLEN",
+  //         description: "Slew Rate Limit Enable (0=Disabled)",
+  //       },
+  //       { bit: 7, name: "DRVSTR", description: "Output Driver Strength" },
+  //     ],
+  //   },
+  // };
 
   const senseConfigValues = [
     { value: "000", name: "INTDISABLE", description: "Interrupt disabled" },
@@ -187,7 +191,7 @@ const AVRPortDiagram = () => {
                             ? "bg-blue-100 border-blue-500"
                             : "bg-white"
                         }`}
-                        onClick={() => setActivePort(port)}
+                        onClick={() => setActivePort(port as PortName)}
                       >
                         {port}
                       </div>
@@ -430,7 +434,7 @@ const AVRPortDiagram = () => {
                 <div className="border p-3 rounded-lg bg-gray-50 w-1/2">
                   <h4 className="font-semibold">{activePort}_DIR Register</h4>
                   <p className="mt-1 text-sm">
-                    Each bit corresponds to a pin's direction:
+                    Each bit corresponds to a pin&apos;s direction:
                   </p>
                   <ul className="list-disc pl-5 mt-2 text-sm">
                     <li>0: Pin configured as input</li>
