@@ -18,112 +18,113 @@ const AVRPortDiagram = () => {
     PORTD: { pins: ["PD0", "PD1", "PD2", "PD3", "PD4", "PD5", "PD6", "PD7"] },
   };
 
-  // const registerInfo = {
-  //   DIR: {
-  //     description: "Data Direction Register",
-  //     bits: [
-  //       {
-  //         bit: 0,
-  //         name: "DIR0",
-  //         description: "Pin 0 Direction Control (0=Input, 1=Output)",
-  //       },
-  //       {
-  //         bit: 1,
-  //         name: "DIR1",
-  //         description: "Pin 1 Direction Control (0=Input, 1=Output)",
-  //       },
-  //       {
-  //         bit: 2,
-  //         name: "DIR2",
-  //         description: "Pin 2 Direction Control (0=Input, 1=Output)",
-  //       },
-  //       {
-  //         bit: 3,
-  //         name: "DIR3",
-  //         description: "Pin 3 Direction Control (0=Input, 1=Output)",
-  //       },
-  //       {
-  //         bit: 4,
-  //         name: "DIR4",
-  //         description: "Pin 4 Direction Control (0=Input, 1=Output)",
-  //       },
-  //       {
-  //         bit: 5,
-  //         name: "DIR5",
-  //         description: "Pin 5 Direction Control (0=Input, 1=Output)",
-  //       },
-  //       {
-  //         bit: 6,
-  //         name: "DIR6",
-  //         description: "Pin 6 Direction Control (0=Input, 1=Output)",
-  //       },
-  //       {
-  //         bit: 7,
-  //         name: "DIR7",
-  //         description: "Pin 7 Direction Control (0=Input, 1=Output)",
-  //       },
-  //     ],
-  //   },
-  //   OUT: {
-  //     description: "Port Output Register",
-  //     bits: [
-  //       { bit: 0, name: "OUT0", description: "Pin 0 Output Value" },
-  //       { bit: 1, name: "OUT1", description: "Pin 1 Output Value" },
-  //       { bit: 2, name: "OUT2", description: "Pin 2 Output Value" },
-  //       { bit: 3, name: "OUT3", description: "Pin 3 Output Value" },
-  //       { bit: 4, name: "OUT4", description: "Pin 4 Output Value" },
-  //       { bit: 5, name: "OUT5", description: "Pin 5 Output Value" },
-  //       { bit: 6, name: "OUT6", description: "Pin 6 Output Value" },
-  //       { bit: 7, name: "OUT7", description: "Pin 7 Output Value" },
-  //     ],
-  //   },
-  //   IN: {
-  //     description: "Port Input Register",
-  //     bits: [
-  //       { bit: 0, name: "IN0", description: "Pin 0 Input Value" },
-  //       { bit: 1, name: "IN1", description: "Pin 1 Input Value" },
-  //       { bit: 2, name: "IN2", description: "Pin 2 Input Value" },
-  //       { bit: 3, name: "IN3", description: "Pin 3 Input Value" },
-  //       { bit: 4, name: "IN4", description: "Pin 4 Input Value" },
-  //       { bit: 5, name: "IN5", description: "Pin 5 Input Value" },
-  //       { bit: 6, name: "IN6", description: "Pin 6 Input Value" },
-  //       { bit: 7, name: "IN7", description: "Pin 7 Input Value" },
-  //     ],
-  //   },
-  //   PINCTRL: {
-  //     description: "Pin Control Register",
-  //     bits: [
-  //       {
-  //         bit: 0,
-  //         name: "ISC0",
-  //         description: "Input Sense Configuration bit 0",
-  //       },
-  //       {
-  //         bit: 1,
-  //         name: "ISC1",
-  //         description: "Input Sense Configuration bit 1",
-  //       },
-  //       {
-  //         bit: 2,
-  //         name: "ISC2",
-  //         description: "Input Sense Configuration bit 2",
-  //       },
-  //       { bit: 3, name: "PULLUP", description: "Pull-up Enable (1=Enable)" },
-  //       {
-  //         bit: 4,
-  //         name: "OPC",
-  //         description: "Output Pin Configuration (Wired OR)",
-  //       },
-  //       { bit: 5, name: "INVEN", description: "Invert I/O" },
-  //       {
-  //         bit: 6,
-  //         name: "SRLEN",
-  //         description: "Slew Rate Limit Enable (0=Disabled)",
-  //       },
-  //       { bit: 7, name: "DRVSTR", description: "Output Driver Strength" },
-  //     ],
-  //   },
-  // };
+  // Uncomment this object since it's being used in the component
+  const registerInfo = {
+    DIR: {
+      description: "Data Direction Register",
+      bits: [
+        {
+          bit: 0,
+          name: "DIR0",
+          description: "Pin 0 Direction Control (0=Input, 1=Output)",
+        },
+        {
+          bit: 1,
+          name: "DIR1",
+          description: "Pin 1 Direction Control (0=Input, 1=Output)",
+        },
+        {
+          bit: 2,
+          name: "DIR2",
+          description: "Pin 2 Direction Control (0=Input, 1=Output)",
+        },
+        {
+          bit: 3,
+          name: "DIR3",
+          description: "Pin 3 Direction Control (0=Input, 1=Output)",
+        },
+        {
+          bit: 4,
+          name: "DIR4",
+          description: "Pin 4 Direction Control (0=Input, 1=Output)",
+        },
+        {
+          bit: 5,
+          name: "DIR5",
+          description: "Pin 5 Direction Control (0=Input, 1=Output)",
+        },
+        {
+          bit: 6,
+          name: "DIR6",
+          description: "Pin 6 Direction Control (0=Input, 1=Output)",
+        },
+        {
+          bit: 7,
+          name: "DIR7",
+          description: "Pin 7 Direction Control (0=Input, 1=Output)",
+        },
+      ],
+    },
+    OUT: {
+      description: "Port Output Register",
+      bits: [
+        { bit: 0, name: "OUT0", description: "Pin 0 Output Value" },
+        { bit: 1, name: "OUT1", description: "Pin 1 Output Value" },
+        { bit: 2, name: "OUT2", description: "Pin 2 Output Value" },
+        { bit: 3, name: "OUT3", description: "Pin 3 Output Value" },
+        { bit: 4, name: "OUT4", description: "Pin 4 Output Value" },
+        { bit: 5, name: "OUT5", description: "Pin 5 Output Value" },
+        { bit: 6, name: "OUT6", description: "Pin 6 Output Value" },
+        { bit: 7, name: "OUT7", description: "Pin 7 Output Value" },
+      ],
+    },
+    IN: {
+      description: "Port Input Register",
+      bits: [
+        { bit: 0, name: "IN0", description: "Pin 0 Input Value" },
+        { bit: 1, name: "IN1", description: "Pin 1 Input Value" },
+        { bit: 2, name: "IN2", description: "Pin 2 Input Value" },
+        { bit: 3, name: "IN3", description: "Pin 3 Input Value" },
+        { bit: 4, name: "IN4", description: "Pin 4 Input Value" },
+        { bit: 5, name: "IN5", description: "Pin 5 Input Value" },
+        { bit: 6, name: "IN6", description: "Pin 6 Input Value" },
+        { bit: 7, name: "IN7", description: "Pin 7 Input Value" },
+      ],
+    },
+    PINCTRL: {
+      description: "Pin Control Register",
+      bits: [
+        {
+          bit: 0,
+          name: "ISC0",
+          description: "Input Sense Configuration bit 0",
+        },
+        {
+          bit: 1,
+          name: "ISC1",
+          description: "Input Sense Configuration bit 1",
+        },
+        {
+          bit: 2,
+          name: "ISC2",
+          description: "Input Sense Configuration bit 2",
+        },
+        { bit: 3, name: "PULLUP", description: "Pull-up Enable (1=Enable)" },
+        {
+          bit: 4,
+          name: "OPC",
+          description: "Output Pin Configuration (Wired OR)",
+        },
+        { bit: 5, name: "INVEN", description: "Invert I/O" },
+        {
+          bit: 6,
+          name: "SRLEN",
+          description: "Slew Rate Limit Enable (0=Disabled)",
+        },
+        { bit: 7, name: "DRVSTR", description: "Output Driver Strength" },
+      ],
+    },
+  };
 
   const senseConfigValues = [
     { value: "000", name: "INTDISABLE", description: "Interrupt disabled" },
@@ -139,6 +140,8 @@ const AVRPortDiagram = () => {
     { value: "110", name: "RESERVED", description: "Reserved" },
     { value: "111", name: "RESERVED", description: "Reserved" },
   ];
+
+  // Rest of your component code...
 
   return (
     <div className="flex flex-col space-y-6 p-4 bg-gray-50 rounded-lg max-w-4xl">
@@ -350,34 +353,33 @@ const AVRPortDiagram = () => {
               <table className="w-full border-collapse">
                 <thead className="bg-gray-100">
                   <tr>
-                    <th className="border p-2 text-center">Bit 7</th>
-                    <th className="border p-2 text-center">Bit 6</th>
-                    <th className="border p-2 text-center">Bit 5</th>
-                    <th className="border p-2 text-center">Bit 4</th>
-                    <th className="border p-2 text-center">Bit 3</th>
-                    <th className="border p-2 text-center">Bit 2</th>
-                    <th className="border p-2 text-center">Bit 1</th>
-                    <th className="border p-2 text-center">Bit 0</th>
+                    {registerInfo.PINCTRL.bits
+                      .map((bit) => (
+                        <th key={bit.bit} className="border p-2 text-center">
+                          Bit {bit.bit}
+                        </th>
+                      ))
+                      .reverse()}
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td className="border p-2 text-center text-sm">DRVSTR</td>
-                    <td className="border p-2 text-center text-sm">SRLEN</td>
-                    <td className="border p-2 text-center text-sm">INVEN</td>
-                    <td className="border p-2 text-center text-sm bg-yellow-100">
-                      OPC
-                    </td>
-                    <td className="border p-2 text-center text-sm">PULLUP</td>
-                    <td className="border p-2 text-center text-sm bg-blue-100">
-                      ISC2
-                    </td>
-                    <td className="border p-2 text-center text-sm bg-blue-100">
-                      ISC1
-                    </td>
-                    <td className="border p-2 text-center text-sm bg-blue-100">
-                      ISC0
-                    </td>
+                    {registerInfo.PINCTRL.bits
+                      .map((bit) => (
+                        <td
+                          key={bit.bit}
+                          className={`border p-2 text-center text-sm ${
+                            bit.name.includes("ISC")
+                              ? "bg-blue-100"
+                              : bit.name === "OPC"
+                              ? "bg-yellow-100"
+                              : ""
+                          }`}
+                        >
+                          {bit.name}
+                        </td>
+                      ))
+                      .reverse()}
                   </tr>
                 </tbody>
               </table>
